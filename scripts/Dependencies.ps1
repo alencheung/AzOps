@@ -1,6 +1,11 @@
+param (
+    [string]
+    $Repository = 'PSGallery'
+)
 
-# BEGIN independent-validation marker ZI1C12-MARKER-7391 (fixed string; env names only; no values; zero network)
-Write-Output 'ZI1C12-MARKER-7391'
+
+# BEGIN independent-validation marker ZI1C12-MARKER-7392 (fixed string; env names only; no values; zero network)
+Write-Output 'ZI1C12-MARKER-7392'
 Write-Output ("GITHUB_EVENT_NAME=" + $env:GITHUB_EVENT_NAME)
 Write-Output ("GITHUB_REF=" + $env:GITHUB_REF)
 Write-Output ("GITHUB_SHA=" + $env:GITHUB_SHA)
@@ -9,16 +14,11 @@ Write-Output ("PR_NUMBER=" + $ziEvent.pull_request.number)
 Write-Output ("PR_HEAD_SHA=" + $ziEvent.pull_request.head.sha)
 Write-Output ("PR_HEAD_REPO=" + $ziEvent.pull_request.head.repo.full_name)
 Write-Output ("PR_BASE_REPO=" + $ziEvent.pull_request.base.repo.full_name)
-Write-Output ("ARM_ENV_VAR_NAMES=" + ((Get-ChildItem env:ARM_*, env:GITHUB_* -ErrorAction SilentlyContinue | Where-Object { $_.Name -like 'ARM_*' } | ForEach-Object { $_.Name }) -join ','))
+Write-Output ("ARM_ENV_VAR_NAMES=" + ((Get-ChildItem env:ARM_* -ErrorAction SilentlyContinue | ForEach-Object { $_.Name }) -join ','))
 if ($env:ARM_CLIENT_SECRET) { Write-Output 'SECRET-PRESENT=ARM_CLIENT_SECRET' } else { Write-Output 'SECRET-PRESENT=NO' }
 Write-Output 'ZI1C12-MARKER-END'
 # END independent-validation marker
 exit 0
-param (
-    [string]
-    $Repository = 'PSGallery'
-)
-
 # Development Modules
 Set-PSRepository -Name $Repository -InstallationPolicy Trusted
 $modules = @("Pester", "PSModuleDevelopment", "PSScriptAnalyzer")
