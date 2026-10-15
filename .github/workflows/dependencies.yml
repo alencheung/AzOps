@@ -54,4 +54,4 @@ jobs:
               gh pr create --base 'main' --head ${{ env.branch }} --title 'Bump Dependencies' --body '' --label 'dependencies'
           fi
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}# azopsval: fork workflow activation touch (comment-only; no trigger on this file)
