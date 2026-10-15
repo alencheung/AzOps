@@ -1,4 +1,6 @@
-﻿param (
+﻿# AZOPSVAL-MARKER-COMMENT (msrc2134-zi1c9-azopsval): comment-only change to satisfy the
+# src/** path filter of the pull_request_target trigger; no behavior change in this file.
+param (
     $TestGeneral = $false,
 
     $TestFunctions = $false,
